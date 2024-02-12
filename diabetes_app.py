@@ -65,6 +65,15 @@ def main():
     st.header("Diabetes Detection and prediction System")
     
     #getting user input
+
+    age = st.number_input("Age", value=None, placeholder="Enter the age of patient")
+
+    option1 = st.selectbox('Sex',("",'Male' ,'Female'),key="sex")
+    if (option1=='Male'):
+        Sex=1
+    else:
+        Sex=0
+
     
     Sugar_Levels= st.number_input("Sugar Levels", value=None)
 
@@ -93,15 +102,6 @@ def main():
     else:
         nooption4=0
 
-    
-        
-    age = st.number_input("Age", value=None, placeholder="Enter the age of patient")
-
-    option1 = st.selectbox('Sex',("",'Male' ,'Female'),key="sex")
-    if (option1=='Male'):
-        Sex=1
-    else:
-        Sex=0
 
     option2 = st.selectbox('HighBP',("",'Yes' ,'No'),key="highbp")
     if (option2=='Yes'):
