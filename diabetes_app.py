@@ -48,10 +48,10 @@ def filedownload(df):
 #single prediction function
 def Diabetes(givendata):
     
-    loaded_model=pk.load(open("Diabetes_Model.sav", "rb"))
+    loaded_model=pk.load(open("The_Latest_Diabetes_Model.sav", "rb"))
     input_data_as_numpy_array = np.asarray(givendata)# changing the input_data to numpy array
     input_data_reshaped = input_data_as_numpy_array.reshape(1,-1) # reshape the array as we are predicting for one instance
-    std_scaler_loaded=pk.load(open("diabetes_std_scaler.pkl", "rb"))
+    std_scaler_loaded=pk.load(open("my_saved_std_scaler.pkl", "rb"))
     std_X_resample=std_scaler_loaded.transform(input_data_reshaped)
     prediction = loaded_model.predict(std_X_resample)
     if prediction==1:
@@ -66,8 +66,44 @@ def main():
     
     #getting user input
     
-    age = st.slider('Patient age', 0, 200, key="age")
-    st.write("Patient is", age, 'years old')
+    Sugar_Levels= st.number_input("Sugar Levels", value=None)
+
+    frequent_urination= st.selectbox('frequent urination',("",'Yes' ,'No'),key="frequent_urine")
+    if (frequent_urination=='Yes'):
+        nooption1=1
+    else:
+        nooption1=0
+
+
+    slow_healing_wounds=st.selectbox('slow_healing_wounds',("",'Yes' ,'No'),key="slow_healing_woun")
+    if (slow_healing_wounds=='Yes'):
+        nooption2=1
+    else:
+        nooption2=0
+
+    family_history=st.selectbox('family_history',("",'Yes' ,'No'),key="family_histo")
+    if (family_history=='Yes'):
+        nooption3=1
+    else:
+        nooption3=0
+
+    pregnancy=st.selectbox('pregnancy',("",'Yes' ,'No'),key="pregn")
+    if (family_history=='Yes'):
+        nooption4=1
+    else:
+        nooption4=0
+
+
+
+
+
+
+
+
+    
+        
+    age = st.number_input("Age", value=None, placeholder="Enter the age of patient")
+    st.write("Patient is", age)
 
     option1 = st.selectbox('Sex',("",'Male' ,'Female'),key="sex")
     if (option1=='Male'):
@@ -172,12 +208,11 @@ def main():
         Education=5
 
 
-    Income = st.slider('Patient Income * 100', 0, 10000, key="income")
-    st.write("Patient income is", Income)
+    Income =st.number_input("Income", value=None)
 
 
-    PhysHlth = st.slider('What is the level of Patient Health', 0, 60, key="PhysHlth")
-    
+    PhysHlth = st.number_input("Age", value=None, placeholder="patient health")
+
 
 
     st.write("\n")
@@ -189,13 +224,13 @@ def main():
     detectionResult = ''#for displaying result
     
     # creating a button for Prediction
-    if age!="" and option1!=""  and option2!=""  and option3!=""  and option4!="" and option5!="" and option6!="" and option7 !=""and  option8 !="" and option9!="" and option10 !="" and option11 !=""  and st.button('Predict'):
+    if age!="" and Sugar_Levels!="" and frequent_urination!="" and slow_healing_wounds!="" and family_history!="" and option1!=""  and option2!=""  and option3!=""  and option4!="" and option5!="" and option6!="" and option7 !=""and  option8 !="" and option9!="" and option10 !="" and option11 !=""  and st.button('Predict'):
         detectionResult = Diabetes([HighBP,HighChol,BMI,Stroke,HeartDiseaseorAttack,PhysActivity,Fruits,Veggies,GenHlth,PhysHlth,DiffWalk,Sex,age,Education,Income,])
         st.success(detectionResult)
 
 
 def multi(input_data):
-    loaded_model=pk.load(open("Diabetes_Model.sav", "rb"))
+    loaded_model=pk.load(open("The_Latest_Diabetes_Model.sav", "rb"))
     dfinput = pd.read_csv(input_data)
     # dfinput=dfinput.iloc[1:].reset_index(drop=True)
 
@@ -204,7 +239,7 @@ def multi(input_data):
     st.dataframe(dfinput)
 
     dfinput=dfinput.values
-    std_scaler_loaded=pk.load(open("diabetes_std_scaler.pkl", "rb"))
+    std_scaler_loaded=pk.load(open("my_saved_std_scaler.pkl", "rb"))
     std_dfinput=std_scaler_loaded.transform(dfinput)
     
     
