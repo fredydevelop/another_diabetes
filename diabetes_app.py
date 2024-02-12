@@ -96,7 +96,6 @@ def main():
     
         
     age = st.number_input("Age", value=None, placeholder="Enter the age of patient")
-    st.write("Patient is", age)
 
     option1 = st.selectbox('Sex',("",'Male' ,'Female'),key="sex")
     if (option1=='Male'):
@@ -123,7 +122,7 @@ def main():
         HeartDiseaseorAttack=0
 
 
-    BMI = st.number_input("Sugar Levels", value=None,key="bbmi")
+    BMI = st.number_input("BMI", value=None,key="bbmi")
 
     
 #
@@ -203,7 +202,7 @@ def main():
     Income =st.number_input("Income", value=None)
 
 
-    PhysHlth = st.number_input("Age", value=None, placeholder="patient health")
+    PhysHlth = st.number_input("physical health", value=None, placeholder="patient health")
 
 
 
