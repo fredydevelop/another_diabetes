@@ -51,7 +51,7 @@ def Diabetes(givendata):
     loaded_model=pk.load(open("Diabetes_Model.sav", "rb"))
     input_data_as_numpy_array = np.asarray(givendata)# changing the input_data to numpy array
     input_data_reshaped = input_data_as_numpy_array.reshape(1,-1) # reshape the array as we are predicting for one instance
-    std_scaler_loaded=pk.load(open("Diabetes_Model.sav", "rb"))
+    std_scaler_loaded=pk.load(open("diabetes_std_scaler.pkl", "rb"))
     std_X_resample=std_scaler_loaded.transform(input_data_reshaped)
     prediction = loaded_model.predict(std_X_resample)
     if prediction==1:
@@ -230,7 +230,7 @@ def multi(input_data):
     st.dataframe(dfinput)
 
     dfinput=dfinput.values
-    std_scaler_loaded=pk.load(open("my_saved_std_scaler.pkl", "rb"))
+    std_scaler_loaded=pk.load(open("diabetes_std_scaler.pkl", "rb"))
     std_dfinput=std_scaler_loaded.transform(dfinput)
     
     
