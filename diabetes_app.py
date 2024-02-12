@@ -130,8 +130,7 @@ def main():
         HeartDiseaseorAttack=0
 
 
-    BMI = st.slider('Patient BMI', 0, 200, key="bmi")
-    st.write("Patient BMI is", BMI)
+    BMI = st.number_input("Sugar Levels", value=None)
 
     
 #
