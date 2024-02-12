@@ -130,7 +130,7 @@ def main():
         HeartDiseaseorAttack=0
 
 
-    BMI = st.number_input("Sugar Levels", value=None,key"bbmi")
+    BMI = st.number_input("Sugar Levels", value=None,key="bbmi")
 
     
 #
