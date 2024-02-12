@@ -48,10 +48,10 @@ def filedownload(df):
 #single prediction function
 def Diabetes(givendata):
     
-    loaded_model=pk.load(open("The_Latest_Diabetes_Model.sav", "rb"))
+    loaded_model=pk.load(open("Diabetes_Model.sav", "rb"))
     input_data_as_numpy_array = np.asarray(givendata)# changing the input_data to numpy array
     input_data_reshaped = input_data_as_numpy_array.reshape(1,-1) # reshape the array as we are predicting for one instance
-    std_scaler_loaded=pk.load(open("my_saved_std_scaler.pkl", "rb"))
+    std_scaler_loaded=pk.load(open("Diabetes_Model.sav", "rb"))
     std_X_resample=std_scaler_loaded.transform(input_data_reshaped)
     prediction = loaded_model.predict(std_X_resample)
     if prediction==1:
@@ -221,7 +221,7 @@ def main():
 
 
 def multi(input_data):
-    loaded_model=pk.load(open("The_Latest_Diabetes_Model.sav", "rb"))
+    loaded_model=pk.load(open("Diabetes_Model.sav", "rb"))
     dfinput = pd.read_csv(input_data)
     # dfinput=dfinput.iloc[1:].reset_index(drop=True)
 
