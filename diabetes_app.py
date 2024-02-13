@@ -31,7 +31,7 @@ from streamlit_option_menu import option_menu
 
 
 #configuring the page setup
-st.set_page_config(page_title='Diabetes prediction system',layout='centered')
+st.set_page_config(page_title='Diabetes Prediction System',layout='centered')
 
 
 selection=option_menu(menu_title=None,options=["Single Prediction","Multi Prediction"],icons=["cast","book","cast"],default_index=0,orientation="horizontal")
@@ -55,14 +55,14 @@ def Diabetes(givendata):
     std_X_resample=std_scaler_loaded.transform(input_data_reshaped)
     prediction = loaded_model.predict(std_X_resample)
     if prediction==1:
-      return "Diabetes is Detected"
+      return "Diabetes detected please visit the nearest hospital "
     else:
       return "No Diabetes Detected"
     
  
 #main function handling the input
 def main():
-    st.header("Diabetes Detection and prediction System")
+    st.header("Diabetes prediction System")
     
     #getting user input
 
@@ -242,10 +242,10 @@ def multi(input_data):
         interchange=[]
         for i in prediction:
             if i==1:
-                newi="Diabetes Detected"
+                newi="Diabetes detected please visit the nearest hospital "
                 interchange.append(newi)
             elif i==0:
-                newi="No Diabetes"
+                newi="No Diabetes Detected"
                 interchange.append(newi)
             
         st.subheader('Here is your prediction')
