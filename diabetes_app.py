@@ -62,7 +62,7 @@ def Diabetes(givendata):
  
 #main function handling the input
 def main():
-    st.header("Diabetes prediction System")
+    st.header("Diabetes Prediction System")
     
     #getting user input
 
